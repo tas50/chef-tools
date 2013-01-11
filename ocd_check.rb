@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+# ocd_check.rb: Obsessive Cookbook Disorder Check: Simple script to check the cookbooks in your 
+#               local repo against the versions on the Opscode community site.  It will return 
+#               false positives if your cookbooks have the same name as community cookbook site 
+#               cookbooks.
+
 require 'net/http'
 require 'rubygems'
 require 'json'
