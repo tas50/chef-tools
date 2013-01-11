@@ -32,12 +32,10 @@ end
 
 # get an array of all local repository cookbooks
 def get_cookbooks()
-  full_path = File.expand_path($opts[:repo])
-  files = Dir.entries(full_path)
   cookbooks = Array.new
-  files.each do |file|
-    if !file.start_with?(".")
-      cookbooks << file
+  Dir.foreach($opts[:repo]) do |cookbook_dir|
+    if File.directory?(File.join($opts[:repo],cookbook_dir)) and !cookbook_dir.start_with?(".")
+      cookbooks << cookbook_dir
     end
   end
   return cookbooks
